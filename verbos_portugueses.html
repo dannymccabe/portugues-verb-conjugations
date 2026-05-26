@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verbos Portugueses — Treino Diário</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f4f0;color:#1a1a18;padding:2rem 1rem;min-height:100vh}
+h1{font-size:20px;font-weight:500;margin-bottom:6px;color:#1a1a18}
+.subtitle{font-size:13px;color:#888780;margin-bottom:1.5rem}
+.top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.top label{font-size:13px;color:#5f5e5a}
+select{font-size:14px;padding:6px 10px;border:0.5px solid #b4b2a9;border-radius:8px;background:#fff;color:#1a1a18;cursor:pointer}
+select:focus{outline:2px solid #378add;outline-offset:1px}
+.tense-strip{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.5rem}
+.tb{padding:5px 12px;font-size:12px;border:0.5px solid #b4b2a9;border-radius:8px;background:transparent;color:#5f5e5a;cursor:pointer;white-space:nowrap;transition:all .15s}
+.tb:hover{background:#e8e7e3}
+.tb.active{font-weight:500;color:#1a1a18;border-color:#5f5e5a;background:#e8e7e3}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;margin-left:6px;vertical-align:middle}
+.badge.past{background:#FAECE7;color:#712B13}
+.badge.pres{background:#E1F5EE;color:#085041}
+.badge.fut{background:#E6F1FB;color:#0C447C}
+.tense-name{font-size:17px;font-weight:500;color:#1a1a18;margin-bottom:4px}
+.tense-hint{font-size:13px;color:#5f5e5a;margin-bottom:1rem;line-height:1.5}
+.tense-hint i{font-style:italic;color:#888780}
+.formula{display:inline-block;font-size:12px;padding:3px 10px;border-radius:8px;border:0.5px solid #b4b2a9;background:#f1efe8;color:#5f5e5a;margin-bottom:1rem;font-family:'Courier New',monospace}
+.grid6{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:3px;margin-bottom:1rem}
+.ch{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;padding:7px 12px;background:#e8e7e3;color:#5f5e5a;border-radius:3px}
+.cp{font-size:13px;padding:9px 12px;background:#e8e7e3;color:#5f5e5a;border-radius:3px}
+.cf{font-size:14px;font-weight:500;padding:9px 12px;background:#fff;border:0.5px solid #d3d1c7;color:#1a1a18;border-radius:3px}
+.cf .stem{color:#888780;font-weight:400}
+.cf .end{font-weight:700}
+.note-box{font-size:12px;color:#5f5e5a;padding:10px 14px;background:#f1efe8;border-radius:8px;line-height:1.6;margin-top:.5rem}
+.card{background:#fff;border:0.5px solid #d3d1c7;border-radius:12px;padding:1.5rem;max-width:680px;margin:0 auto}
+@media(prefers-color-scheme:dark){
+  body{background:#1a1a18;color:#e8e7e3}
+  .card{background:#2c2c2a;border-color:#444441}
+  h1,.tense-name{color:#e8e7e3}
+  .subtitle,.top label,.tense-hint,.cp{color:#888780}
+  select{background:#2c2c2a;color:#e8e7e3;border-color:#444441}
+  .tb{color:#888780;border-color:#444441}
+  .tb:hover,.tb.active{background:#444441;color:#e8e7e3;border-color:#5f5e5a}
+  .ch,.cp{background:#444441;color:#888780}
+  .cf{background:#2c2c2a;border-color:#444441;color:#e8e7e3}
+  .cf .stem{color:#888780}
+  .note-box,.formula{background:#1a1a18;color:#888780;border-color:#444441}
+  .badge.past{background:#4A1B0C;color:#F5C4B3}
+  .badge.pres{background:#04342C;color:#9FE1CB}
+  .badge.fut{background:#042C53;color:#B5D4F4}
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Verbos portugueses — treino diário</h1>
+  <p class="subtitle">7 tempos essenciais · PT europeu · -AR, -ER, -IR e irregulares</p>
+
+  <div class="top">
+    <label>Verbo:</label>
+    <select id="vSel">
+      <optgroup label="-AR">
+        <option value="falar">falar — to speak</option>
+        <option value="gostar">gostar — to like</option>
+        <option value="trabalhar">trabalhar — to work</option>
+        <option value="comprar">comprar — to buy</option>
+        <option value="esperar">esperar — to wait/hope</option>
+      </optgroup>
+      <optgroup label="-ER">
+        <option value="comer">comer — to eat</option>
+        <option value="beber">beber — to drink</option>
+        <option value="perceber">perceber — to understand</option>
+        <option value="vender">vender — to sell</option>
+      </optgroup>
+      <optgroup label="-IR">
+        <option value="partir">partir — to leave</option>
+        <option value="abrir">abrir — to open</option>
+        <option value="dormir">dormir — to sleep</option>
+        <option value="sentir">sentir — to feel</option>
+      </optgroup>
+      <optgroup label="Irregulares essenciais">
+        <option value="ser">ser — to be (perm.)</option>
+        <option value="estar">estar — to be (temp.)</option>
+        <option value="ter">ter — to have</option>
+        <option value="ir">ir — to go</option>
+        <option value="fazer">fazer — to do/make</option>
+      </optgroup>
+    </select>
+  </div>
+
+  <div class="tense-strip" id="strip"></div>
+  <div id="panel"></div>
+</div>
+
+<script>
+const pronouns=['eu','tu','ele/ela/você','nós','vós','eles/elas/vocês'];
+const tenseList=[
+  {id:'pret_perf',label:'Pretérito perfeito',badge:'past',badgeLabel:'passado',hint:'Acção completada e terminada no passado.',usage:'Ontem <i>falei</i> com ela. — Yesterday I spoke with her.'},
+  {id:'imperfeito',label:'Pretérito imperfeito',badge:'past',badgeLabel:'passado',hint:'Acção habitual ou contínua no passado.',usage:'Em criança <i>falava</i> muito. — As a child I used to speak a lot.'},
+  {id:'presente',label:'Presente',badge:'pres',badgeLabel:'presente',hint:'Acção habitual ou a decorrer agora.',usage:'Eu <i>falo</i> português. — I speak Portuguese.'},
+  {id:'imperfeito_comp',label:'Imperfeito composto (tinha...)',badge:'past',badgeLabel:'passado',hint:'ter (imperfeito) + particípio passado — acção passada antes de outra.',formula:'tinha/tinhas/tinha... + participio passado',usage:'<i>Tinha falado</i> com ela antes de sair. — I had spoken with her before leaving.'},
+  {id:'fut_imediato',label:'Futuro imediato (vou...)',badge:'fut',badgeLabel:'futuro',hint:'ir (presente) + infinitivo — intenção ou futuro próximo.',formula:'vou/vais/vai... + infinitivo',usage:'<i>Vou falar</i> com ela amanhã. — I\'m going to speak with her tomorrow.'},
+  {id:'fut_simples',label:'Futuro simples',badge:'fut',badgeLabel:'futuro',hint:'O futuro "real" — acções que acontecerão.',usage:'<i>Falarei</i> com ela amanhã. — I will speak with her tomorrow.'},
+  {id:'condicional',label:'Condicional',badge:'fut',badgeLabel:'futuro',hint:'Equivalente a "would" — hipóteses e cortesia.',usage:'<i>Falaria</i> mais se soubesse. — I would speak more if I knew.'},
+];
+const verbs={
+  falar:{type:'ar',pp:'falado',presente:['falo','falas','fala','falamos','falais','falam'],pret_perf:['falei','falaste','falou','falámos','falastes','falaram'],imperfeito:['falava','falavas','falava','falávamos','faláveis','falavam'],fut_simples:['falarei','falarás','falará','falaremos','falareis','falarão'],condicional:['falaria','falarias','falaria','falaríamos','falaríeis','falariam'],note:'Verbo regular -ar. Radical: fal-'},
+  gostar:{type:'ar',pp:'gostado',presente:['gosto','gostas','gosta','gostamos','gostais','gostam'],pret_perf:['gostei','gostaste','gostou','gostámos','gostastes','gostaram'],imperfeito:['gostava','gostavas','gostava','gostávamos','gostaveis','gostavam'],fut_simples:['gostarei','gostarás','gostará','gostaremos','gostareis','gostarão'],condicional:['gostaria','gostarias','gostaria','gostaríamos','gostaríeis','gostariam'],note:'Gostar de + substantivo/infinitivo: "gosto de música".'},
+  trabalhar:{type:'ar',pp:'trabalhado',presente:['trabalho','trabalhas','trabalha','trabalhamos','trabalhais','trabalham'],pret_perf:['trabalhei','trabalhaste','trabalhou','trabalhámos','trabalhastes','trabalharam'],imperfeito:['trabalhava','trabalhavas','trabalhava','trabalhávamos','trabalháveis','trabalhavam'],fut_simples:['trabalharei','trabalharás','trabalhará','trabalharemos','trabalhareis','trabalharão'],condicional:['trabalharia','trabalharias','trabalharia','trabalharíamos','trabalharíeis','trabalhariam'],note:'Verbo regular -ar. Radical: trabalh-'},
+  comprar:{type:'ar',pp:'comprado',presente:['compro','compras','compra','compramos','comprais','compram'],pret_perf:['comprei','compraste','comprou','comprámos','comprastes','compraram'],imperfeito:['comprava','compravas','comprava','comprávamos','compráveis','compravam'],fut_simples:['comprarei','comprarás','comprará','compraremos','comprareis','comprarão'],condicional:['compraria','comprarias','compraria','compraríamos','compraríeis','comprariam'],note:'Verbo regular -ar. Radical: compr-'},
+  esperar:{type:'ar',pp:'esperado',presente:['espero','esperas','espera','esperamos','esperais','esperam'],pret_perf:['esperei','esperaste','esperou','esperámos','esperastes','esperaram'],imperfeito:['esperava','esperavas','esperava','esperávamos','esperáveis','esperavam'],fut_simples:['esperarei','esperarás','esperará','esperaremos','esperareis','esperarão'],condicional:['esperaria','esperarias','esperaria','esperaríamos','esperaríeis','esperariam'],note:'Esperar por = to wait for. Esperar que + conjuntivo = to hope that.'},
+  comer:{type:'er',pp:'comido',presente:['como','comes','come','comemos','comeis','comem'],pret_perf:['comi','comeste','comeu','comemos','comestes','comeram'],imperfeito:['comia','comias','comia','comíamos','comíeis','comiam'],fut_simples:['comerei','comerás','comerá','comeremos','comereis','comerão'],condicional:['comeria','comerias','comeria','comeríamos','comeríeis','comeriam'],note:'Verbo regular -er. Radical: com-'},
+  beber:{type:'er',pp:'bebido',presente:['bebo','bebes','bebe','bebemos','bebeis','bebem'],pret_perf:['bebi','bebeste','bebeu','bebemos','bebestes','beberam'],imperfeito:['bebia','bebias','bebia','bebíamos','bebíeis','bebiam'],fut_simples:['beberei','beberás','beberá','beberemos','bebereis','beberão'],condicional:['beberia','beberias','beberia','beberíamos','beberíeis','beberiam'],note:'Verbo regular -er. Radical: beb-'},
+  perceber:{type:'er',pp:'percebido',presente:['percebo','percebes','percebe','percebemos','percebeis','percebem'],pret_perf:['percebi','percebeste','percebeu','percebemos','percebestes','perceberam'],imperfeito:['percebia','percebias','percebia','percebíamos','percebíeis','percebiam'],fut_simples:['perceberei','perceberás','perceberá','perceberemos','percebereis','perceberão'],condicional:['perceberia','perceberias','perceberia','perceberíamos','perceberíeis','perceberiam'],note:'"Não percebo" = I don\'t understand. Perceber = entender em PT europeu.'},
+  vender:{type:'er',pp:'vendido',presente:['vendo','vendes','vende','vendemos','vendeis','vendem'],pret_perf:['vendi','vendeste','vendeu','vendemos','vendestes','venderam'],imperfeito:['vendia','vendias','vendia','vendíamos','vendíeis','vendiam'],fut_simples:['venderei','venderás','venderá','venderemos','vendereis','venderão'],condicional:['venderia','venderias','venderia','venderíamos','venderíeis','venderiam'],note:'Verbo regular -er. Radical: vend-'},
+  partir:{type:'ir',pp:'partido',presente:['parto','partes','parte','partimos','partis','partem'],pret_perf:['parti','partiste','partiu','partimos','partistes','partiram'],imperfeito:['partia','partias','partia','partíamos','partíeis','partiam'],fut_simples:['partirei','partirás','partirá','partiremos','partireis','partirão'],condicional:['partiria','partirias','partiria','partiríamos','partiríeis','partiriam'],note:'Verbo regular -ir. Radical: part-'},
+  abrir:{type:'ir',pp:'aberto',presente:['abro','abres','abre','abrimos','abris','abrem'],pret_perf:['abri','abriste','abriu','abrimos','abristes','abriram'],imperfeito:['abria','abrias','abria','abríamos','abríeis','abriam'],fut_simples:['abrirei','abrirás','abrirá','abriremos','abrireis','abrirão'],condicional:['abriria','abririas','abriria','abriríamos','abriríeis','abririam'],note:'Particípio passado irregular: aberto (não "abrido").'},
+  dormir:{type:'ir',pp:'dormido',presente:['durmo','dormes','dorme','dormimos','dormis','dormem'],pret_perf:['dormi','dormiste','dormiu','dormimos','dormistes','dormiram'],imperfeito:['dormia','dormias','dormia','dormíamos','dormíeis','dormiam'],fut_simples:['dormirei','dormirás','dormirá','dormiremos','dormireis','dormirão'],condicional:['dormiria','dormirias','dormiria','dormiríamos','dormiríeis','dormiriam'],note:'Alternância vocálica: durmo (eu) mas dormimos (nós).'},
+  sentir:{type:'ir',pp:'sentido',presente:['sinto','sentes','sente','sentimos','sentis','sentem'],pret_perf:['senti','sentiste','sentiu','sentimos','sentistes','sentiram'],imperfeito:['sentia','sentias','sentia','sentíamos','sentíeis','sentiam'],fut_simples:['sentirei','sentirás','sentirá','sentiremos','sentireis','sentirão'],condicional:['sentiria','sentirias','sentiria','sentiríamos','sentiríeis','sentiriam'],note:'Alternância vocálica: sinto/sentes. Sentir-se = to feel (oneself).'},
+  ser:{type:'irr',pp:'sido',presente:['sou','és','é','somos','sois','são'],pret_perf:['fui','foste','foi','fomos','fostes','foram'],imperfeito:['era','eras','era','éramos','éreis','eram'],fut_simples:['serei','serás','será','seremos','sereis','serão'],condicional:['seria','serias','seria','seríamos','seríeis','seriam'],note:'Ser = identidade, origem, profissão, características permanentes, horas.'},
+  estar:{type:'irr',pp:'estado',presente:['estou','estás','está','estamos','estais','estão'],pret_perf:['estive','estiveste','esteve','estivemos','estivestes','estiveram'],imperfeito:['estava','estavas','estava','estávamos','estáveis','estavam'],fut_simples:['estarei','estarás','estará','estaremos','estareis','estarão'],condicional:['estaria','estarias','estaria','estaríamos','estaríeis','estariam'],note:'Estar = estados temporários, localização, sentimentos, progressivo (estar a + inf.).'},
+  ter:{type:'irr',pp:'tido',presente:['tenho','tens','tem','temos','tendes','têm'],pret_perf:['tive','tiveste','teve','tivemos','tivestes','tiveram'],imperfeito:['tinha','tinhas','tinha','tínhamos','tínheis','tinham'],fut_simples:['terei','terás','terá','teremos','tereis','terão'],condicional:['teria','terias','teria','teríamos','teríeis','teriam'],note:'Auxiliar dos tempos compostos. O imperfeito de "ter" forma o "tinha falado".'},
+  ir:{type:'irr',pp:'ido',presente:['vou','vais','vai','vamos','ides','vão'],pret_perf:['fui','foste','foi','fomos','fostes','foram'],imperfeito:['ia','ias','ia','íamos','íeis','iam'],fut_simples:['irei','irás','irá','iremos','ireis','irão'],condicional:['iria','irias','iria','iríamos','iríeis','iriam'],note:'Presente de "ir" forma o futuro imediato. Pretérito = mesmo que ser!'},
+  fazer:{type:'irr',pp:'feito',presente:['faço','fazes','faz','fazemos','fazeis','fazem'],pret_perf:['fiz','fizeste','fez','fizemos','fizestes','fizeram'],imperfeito:['fazia','fazias','fazia','fazíamos','fazíeis','faziam'],fut_simples:['farei','farás','fará','faremos','fareis','farão'],condicional:['faria','farias','faria','faríamos','faríeis','fariam'],note:'Futuro/condicional: radical contraído far-. Particípio irregular: feito.'},
+};
+const terImp=['tinha','tinhas','tinha','tínhamos','tínheis','tinham'];
+const irPres=['vou','vais','vai','vamos','ides','vão'];
+let activeTense='pret_perf';
+
+function render(){
+  const verb=document.getElementById('vSel').value;
+  const vd=verbs[verb];
+  document.getElementById('strip').innerHTML=tenseList.map(t=>
+    `<button class="tb${t.id===activeTense?' active':''}" onclick="setTense('${t.id}')">${t.label}<span class="badge ${t.badge}">${t.badgeLabel}</span></button>`
+  ).join('');
+  const t=tenseList.find(x=>x.id===activeTense);
+  let formulaHtml='';
+  if(t.formula) formulaHtml=`<div class="formula">${t.formula}</div><br>`;
+  let rows='';
+  pronouns.forEach((p,i)=>{
+    let display;
+    if(t.id==='imperfeito_comp'){
+      display=`<span class="stem">${terImp[i]}</span> <span class="end">${vd.pp}</span>`;
+    } else if(t.id==='fut_imediato'){
+      display=`<span class="stem">${irPres[i]}</span> <span class="end">${verb}</span>`;
+    } else {
+      const form=vd[t.id][i];
+      const endMap={
+        presente:{ar:['o','as','a','amos','ais','am'],er:['o','es','e','emos','eis','em'],ir:['o','es','e','imos','is','em']},
+        pret_perf:{ar:['ei','aste','ou','ámos','astes','aram'],er:['i','este','eu','emos','estes','eram'],ir:['i','iste','iu','imos','istes','iram']},
+        imperfeito:{ar:['ava','avas','ava','ávamos','áveis','avam'],er:['ia','ias','ia','íamos','íeis','iam'],ir:['ia','ias','ia','íamos','íeis','iam']},
+        fut_simples:{ar:['ei','ás','á','emos','eis','ão'],er:['ei','ás','á','emos','eis','ão'],ir:['ei','ás','á','emos','eis','ão'],irr:['ei','ás','á','emos','eis','ão']},
+        condicional:{ar:['ia','ias','ia','íamos','íeis','iam'],er:['ia','ias','ia','íamos','íeis','iam'],ir:['ia','ias','ia','íamos','íeis','iam'],irr:['ia','ias','ia','íamos','íeis','iam']},
+      };
+      const endings=endMap[t.id]?.[vd.type];
+      let found=false;
+      if(endings){
+        const e=endings[i];
+        if(form.endsWith(e)){
+          const stem=form.slice(0,form.length-e.length);
+          display=`<span class="stem">${stem}</span><span class="end">${e}</span>`;
+          found=true;
+        }
+      }
+      if(!found) display=`<span>${form}</span>`;
+    }
+    rows+=`<div class="cp">${p}</div><div class="cf">${display}</div>`;
+  });
+  document.getElementById('panel').innerHTML=`
+    <div class="tense-name">${t.label}</div>
+    <div class="tense-hint">${t.hint}<br><span>${t.usage}</span></div>
+    ${formulaHtml}
+    <div class="grid6"><div class="ch">Pessoa</div><div class="ch">Conjugação</div>${rows}</div>
+    <div class="note-box">${vd.note}</div>`;
+}
+function setTense(id){activeTense=id;render();}
+document.getElementById('vSel').addEventListener('change',render);
+render();
+</script>
+</body>
+</html>
